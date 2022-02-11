@@ -1,0 +1,56 @@
+:host{
+  ion-footer{
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+    ion-fab {
+      margin-bottom: env(safe-area-inset-bottom); /* fix notch ios*/
+      ion-fab-button {
+        --box-shadow: none;
+      }
+    }
+    .tab-bar {
+      --border: 0;
+      --background: transparent;
+      position: absolute;
+      bottom: 0;
+      left:0; right: 0;
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      &:after{
+        content: " ";
+        width: 100%;
+        bottom: 0;
+        background: var(--ion-color-secondary);
+        height: env(safe-area-inset-bottom);
+        position: absolute;
+      }
+      .tab-bar-btn {
+        flex: 1;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        background: var(--ion-color-secondary);
+        color: var(--ion-text-color);
+        &.active{
+          color: var(--ion-color-primary)
+        }
+        &:first-child {
+          margin-right: 0px;
+          border-top-right-radius: 18px;
+        }
+        &:last-child {
+          margin-left: 0px;
+          border-top-left-radius: 18px;
+        }
+      }
+      svg {
+        width: 72px;
+        margin-top: 19px;
+        path{
+          fill:  var(--ion-color-secondary);
+        }
+      }
+    }
+  }
+}

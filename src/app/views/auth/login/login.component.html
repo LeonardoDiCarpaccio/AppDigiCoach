@@ -1,0 +1,23 @@
+<ion-content >
+    <ion-grid  style="margin-top : 50%">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col  size-md="6" size-lg="5" size-xs="12">
+          <div class="login-header">
+          </div>
+          <div  class="login-items">
+
+            <ion-item style="margin-top: 10%;">
+              <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Email" ></ion-input>
+            </ion-item>
+            <ion-item style="margin-top: 10%;">
+              <ion-input [(ngModel)]="password" name="password" type="password" placeholder="Mot de passe" ></ion-input>
+            </ion-item>
+          </div>
+          <div style="margin-top: 15%;"  class="login-submit">
+            <ion-button color="primary" type="submit" expand="block" (click)="login()" >Connexion</ion-button>
+
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
