@@ -5,12 +5,14 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class PreviewPlayerService {
+export class AssocPlayerTeam {
 
   constructor(private http : HttpClient) { }
 
-  getPlayerAverageMarkPerSkillType(data : any){
-    return this.http.post<any>(`${environment.apiUrl}/preview/previewPlayer/getAverageByTypeSkillAndPlayer`,data)
-  }
+
+  getIdTeamUser(data : any){
+  return this.http.post<any>(`${environment.apiUrl}/assoc_player_team/`,data)
+}
 
 }
+

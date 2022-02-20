@@ -22,6 +22,27 @@ export class AuthService {
       }));
   }
 
+  getId(){
+    if( typeof this.id_user != "undefined"){
+     return this.id_user
+    }else{
+      let  a : any  = localStorage.getItem('user')
+      if(a == null){
+        this.disconnect()
+      }else{
+       let us = JSON.parse(a).id
+       this.id_user = us
+       return this.id_user
+      }
+ 
+    }
+ 
+   }
+   disconnect() {
+    localStorage.removeItem('user')
+
+    this.router.navigate(['/login'])
+  }
 
   async getMe() {
     await this.http.post<any>(`${environment.apiUrl}/auth/check`, {}).subscribe(res => {
