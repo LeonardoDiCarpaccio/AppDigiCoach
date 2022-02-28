@@ -8,32 +8,55 @@
 
   <div class="d-flex w-100 h-3-5 mt-5">
 
-  <div class="containSlideTitle">
+  <div style  =" width: 80%;"
+   class="containSlideTitle">
 
+    <div *ngIf="currentIndex==3"class="nextTypeSkill" >
+      <span  class="nextTypeSkillFont" >{{arrTitle[currentIndex - 3]}}</span>
+    </div> 
+    <div *ngIf="currentIndex==2"class="nextTypeSkill" >
+      <span  class="nextTypeSkillFont" >{{arrTitle[currentIndex - 2]}}</span>
+    </div> 
+    <div *ngIf="currentIndex==3"class="nextTypeSkill" >
+      <span  class="nextTypeSkillFont" >{{arrTitle[currentIndex - 2]}}</span>
+    </div> 
+    <div *ngIf="currentIndex>0 "class="nextTypeSkill" >
+      <span  class="nextTypeSkillFont" >{{arrTitle[currentIndex - 1]}}</span>
+    </div>
+   
 <div class="currentTypeSkill" >
   <span class="currentTypeSkillfont" >{{arrTitle[currentIndex]}}</span>
   </div>
 
-  <div class="nextTypeSkill" >
+ 
+  <div *ngIf="currentIndex!=3" class="nextTypeSkill" >
     <span class="nextTypeSkillFont" >{{arrTitle[currentIndex + 1]}}</span>
   </div>
-
+  <div *ngIf="currentIndex == 0" class="nextTypeSkill" >
+    <span class="nextTypeSkillFont" >{{arrTitle[currentIndex + 2]}}</span>
+  </div>
+  <div *ngIf="currentIndex == 0" class="nextTypeSkill" >
+    <span class="nextTypeSkillFont" >{{arrTitle[currentIndex + 3]}}</span>
+  </div>
+  <div *ngIf="currentIndex == 1" class="nextTypeSkill" >
+    <span class="nextTypeSkillFont" >{{arrTitle[currentIndex + 2]}}</span>
+  </div>
 
   </div>
   </div>
 
   <ion-slides  (ionSlideNextStart)="goRightSlide()"  (ionSlidePrevStart)="goLeftSlide()"  pager="true" class="slidesContainer" [options]="slideOpts">
 
-    <ion-slide  *ngFor="let item of arr" class="h-90">
+    <ion-slide  *ngIf="currentIndex==0" class="h-90">
 
       <div  class="slideItem">
 
-  <div *ngFor="let item of arr" class="skillItem">
+  <div  *ngFor="let item of arraySkillsMen" class="skillItem">
 
     <div class="leftSideSkillItem">
 
-      <span  class="font nameSkill">Jeu d'épaule</span>
-      <span  class="font markSkill">Note : 2</span>
+      <span  class="font nameSkill">{{item.name_skill}}</span>
+      <span  class="font markSkill">Note : {{item.mark}}</span>
     </div>
 
     <div class="rightSideSkillItem">
@@ -46,8 +69,75 @@
 
       </div>
     </ion-slide>
+    <ion-slide  *ngIf="currentIndex==1" class="h-90">
 
+      <div  class="slideItem">
+
+  <div  *ngFor="let item of arraySkillsMen" class="skillItem">
+
+    <div class="leftSideSkillItem">
+
+      <span  class="font nameSkill">{{item.name_skill}}</span>
+      <span  class="font markSkill">Note : {{item.mark}}</span>
+    </div>
+
+    <div class="rightSideSkillItem">
+      <span style="margin: 0;margin-top: 10px;" class="font ">Voir plus</span>
+
+  <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
+    </div>
+
+  </div>
+
+      </div>
+    </ion-slide>
+    <ion-slide  *ngIf="currentIndex==2" class="h-90">
+
+      <div  class="slideItem">
+
+  <div  *ngFor="let item of arraySkillsMen" class="skillItem">
+
+    <div class="leftSideSkillItem">
+
+      <span  class="font nameSkill">{{item.name_skill}}</span>
+      <span  class="font markSkill">Note : {{item.mark}}</span>
+    </div>
+
+    <div class="rightSideSkillItem">
+      <span style="margin: 0;margin-top: 10px;" class="font ">Voir plus</span>
+
+  <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
+    </div>
+
+  </div>
+
+      </div>
+    </ion-slide>
+    <ion-slide  *ngIf="currentIndex==3" class="h-90">
+
+      <div  class="slideItem">
+
+  <div  *ngFor="let item of arraySkillsMen" class="skillItem">
+
+    <div class="leftSideSkillItem">
+
+      <span  class="font nameSkill">{{item.name_skill}}</span>
+      <span  class="font markSkill">Note : {{item.mark}}</span>
+    </div>
+
+    <div class="rightSideSkillItem">
+      <span style="margin: 0;margin-top: 10px;" class="font ">Voir plus</span>
+
+  <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
+    </div>
+
+  </div>
+
+      </div>
+    </ion-slide>
   </ion-slides>
+
+
 
 
 
