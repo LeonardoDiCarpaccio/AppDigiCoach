@@ -24,3 +24,64 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// margin
+
+.mt-5{
+  margin-top: 5%;
+}
+
+.mt-10{
+  margin-top: 10%!important;
+}
+
+.mt-20{
+  margin-top: 20%;
+}
+.mt-60{
+  margin-top: 60%;
+}
+
+.m-auto{
+  margin: auto;
+}
+
+.ml-5{
+  margin-left: 5%;
+}
+
+
+// flex
+
+.d-flex{
+  display: flex;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+// size
+
+.w-100{
+  width: 100%;
+}
+
+.h-90{
+  height: 90%;
+}
+
+.h-3-5{
+height: 3.5%;
+}
+
+// color
+
+.mediumColor{
+ color: #92949c
+}
+

@@ -1,5 +1,5 @@
-<ion-content >
-    <ion-grid  style="margin-top : 50%">
+<ion-content  scrollY="false" [fullscreen]="true"  style="--background : #2E3034;" >
+    <!-- <ion-grid  style="margin-top : 50%">
       <ion-row class="ion-align-items-center ion-justify-content-center">
         <ion-col  size-md="6" size-lg="5" size-xs="12">
           <div class="login-header">
@@ -19,5 +19,29 @@
           </div>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
+<div class=" d-flex mt-60 flex-col ion-align-items-center">
+
+<div class="d-flex flex-row mt-10">
+<ion-item lines="none" style="--background: #2E3034;border-radius: 12px;border: 1px solid #6E7899;color: #FFFFFF">
+
+    <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Email" ></ion-input>
+
+</ion-item>
+
+</div>
+
+<div class=" d-flex flex-row mt-10">
+  <ion-item lines="none" style="--background: #2E3034;border-radius: 12px;border: 1px solid #6E7899;color: #FFFFFF">
+    <ion-input [(ngModel)]="password" name="password" type="password" placeholder="Mot de passe" ></ion-input>
+  </ion-item>
+</div>
+
+
+<div class="w-100 d-flex flex-row mt-20">
+  <button (click)="login()" style=" margin: auto;background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 50%;padding: 10px;" class="fontTitle">Se connecter</button>
+</div>
+
+</div>
+
 </ion-content>

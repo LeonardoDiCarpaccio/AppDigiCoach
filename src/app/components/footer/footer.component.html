@@ -1,37 +1,34 @@
 <ion-footer>
 
   <ion-fab vertical="bottom" horizontal="center" translucent="true">
-    <ion-fab-button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <ion-icon name="qr-code-outline"></ion-icon>
+    <ion-fab-button style="--background :#3F4042;;" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <ion-icon [color]="route === '/home' ? 'primary' : 'medium'" name="home-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
 
 
    <div class="tab-bar ion-no-border">
-    <a routerLink="/stat" class="tab-bar-btn" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <ion-icon name="list-outline"></ion-icon>
+    <a routerLink="/stat" class="tab-bar-btn "  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <ion-icon [color]="route === '/stat' ? 'primary' : 'medium'" name="bar-chart-outline"></ion-icon>
     </a>
 
 
-    <a routerLink="/auto-eval" class="tab-bar-btn centerLeft" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <ion-icon name="list-outline"></ion-icon>
+    <a routerLink="/auto-eval" class="tab-bar-btn centerLeft  " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <ion-icon  [color]="route === '/auto-eval' ? 'primary' : 'medium'" name="reader-outline"></ion-icon>
     </a>
 
 
     <svg height="36" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg"><path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd"></path></svg>
 
 
-    <a routerLink="/profile" class="tab-bar-btn centerRight" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <ion-icon name="person-circle-outline"></ion-icon>
+    <a routerLink="/skill" class="tab-bar-btn centerRight" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <ion-icon [color]="route === '/skill' ? 'primary' : 'medium'"  name="list-outline"></ion-icon>
     </a>
 
-
-
-    <a routerLink="/skill" class="tab-bar-btn" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <ion-icon name="person-circle-outline"></ion-icon>
+    <a routerLink="/profile" class="tab-bar-btn " routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <ion-icon [color]="route === '/profile' ? 'primary' : 'medium'"  name="person-circle-outline"></ion-icon>
     </a>
-
 
 
 

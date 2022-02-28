@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
 email= ""
 password = ""
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth : AuthService,private router : Router) { }
 
   async ngOnInit(){
     await this.auth.getMe()
@@ -22,5 +23,9 @@ password = ""
     alert("email ou mot de passe incorrect")
     })
     }
+
+  // login(){
+  //   this.router.navigate(['/home'])
+  // }
 
 }

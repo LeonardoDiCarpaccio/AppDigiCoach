@@ -44,7 +44,7 @@ $black-gradient-to-top: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9
     position: relative;
     width:300px;
     height:485px;
-    background-image: url(C:\Users\luciano\Documents\AppDigiCoach\src\assets\images\card.png);
+    background-image: url('../../../../assets/images/card.png');
     background-position: center center;
     background-size:100% 100%;
     background-repeat: no-repeat;
@@ -100,7 +100,7 @@ $black-gradient-to-top: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9
                 height:100%;
                 object-fit: contain;
                 position: relative;
-                right: -1.5rem;
+                // right: -1rem;
                 bottom: 0;
             }
             .player-extra{

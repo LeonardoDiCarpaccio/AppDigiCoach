@@ -8,7 +8,28 @@ import { Component, OnInit } from '@angular/core';
 export class AutoEvalComponent implements OnInit {
 
   constructor() { }
+arr = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+IsCurrentAutoEval = true
+// arr = [0,0,0,0,0]
 
   ngOnInit() {}
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
 
+
+
+  next(){
+
+  }
+
+
+handleIsCurrentAutoEval(){
+  this.IsCurrentAutoEval = !this.IsCurrentAutoEval
+}
+
+  previous(){
+
+  }
 }

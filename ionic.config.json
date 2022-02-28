@@ -1,5 +1,7 @@
 {
   "name": "AppDigiCoach",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

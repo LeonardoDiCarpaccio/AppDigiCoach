@@ -9,7 +9,7 @@ import { PreviewPlayerService } from 'src/app/services/preview-player.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  
+
   infos : any
   averagePhy : any
   averageTac : any
@@ -33,14 +33,14 @@ export class HomeComponent implements OnInit {
   clubLogo(){
     if(this.infos[0].id_club==1){
       this.pathLogoClub='ogcnice.png'
-     
+
     }
   }
   // Meme principe mais avec le pays dorigine du joueur
 async skillAverage(){
  await this.previewPlayer.getPlayerAverageMarkPerSkillType({id_user : this.auth.getId()}).subscribe((res)=>{
    console.log(res,"res")
-  
+
 this.averagePhy = res.find((name)=> name.name_type_skill=="physique") ? res.find((name)=> name.name_type_skill=="physique").average : "N/N"
 this.averageTac = res.find((name)=> name.name_type_skill=="tactique") ? res.find((name)=> name.name_type_skill=="physique").average : "N/N"
 this.averageTec = res.find((name)=> name.name_type_skill=="technique") ? res.find((name)=> name.name_type_skill=="physique").average : "N/N"

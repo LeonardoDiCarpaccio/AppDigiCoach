@@ -1,0 +1,89 @@
+
+// general
+.fontTitle{
+  font-family: 'Roboto';
+  font-weight: lighter;
+  font-size:16px;
+  color: #FFFFFF;
+  margin: auto;
+}
+.font{
+  font-family: 'Roboto';
+font-weight: lighter;
+font-size:12px;
+color: #FFFFFF;
+margin: auto;
+
+}
+
+// top of page
+.currentTypeSkill{
+  width: 55%; height: 70%;background-color: #2E3034;border-radius: 12px;display: flex;margin-left: 2%;
+  transition: all 0.3s;
+}
+
+
+.currentTypeSkillfont{
+  font-family: 'Roboto';
+font-weight: lighter;
+font-size:12px;
+color: #FFFFFF;
+margin: auto;
+transition: all 0.3s;
+}
+
+
+.nextTypeSkillFont{
+  font-family: 'Roboto';
+font-weight: lighter;
+font-size:12px;
+color: #FFFFFF;
+margin: auto;
+opacity: 0.5;
+
+}
+
+.nextTypeSkill{
+  width: 55%; height: 70%;background-color: transparent;border-radius: 12px;display: flex;
+transition: all 0.3s;
+}
+
+
+// slide
+.containSlideTitle{
+  margin: auto;background-color: #3F4042; width: 50%;height: 100%;border-radius: 12px;display: flex;flex-direction: row;align-items: center;
+}
+
+
+
+.slidesContainer{
+  --bullet-background: #cccccc;;margin-top: 15%;height: 60%;width:80%;
+  background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;
+}
+
+.slideItem{
+  height: 100%;width: 100%;display: flex;flex-direction: column;overflow-y: auto;align-items: center;
+}
+
+.skillItem{
+  width: 90%;height: 70px;background-color: #2E3034;border-radius: 12px;margin-top: 15px;display: flex;flex-direction: row;
+}
+
+.leftSideSkillItem{
+  display: flex;flex-direction: column;width: 70%;align-items: flex-start;margin-left: 5%;height: 70px;
+}
+
+.nameSkill{
+  margin: 0!important;margin-top: 15px!important;
+}
+
+.markSkill{
+  margin: 0!important;margin-top: 5px!important;
+}
+
+
+.rightSideSkillItem{
+  width: 30%;display: flex;flex-direction: column;align-items: center;height: 70px;
+}
+
+

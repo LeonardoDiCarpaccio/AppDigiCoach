@@ -1,6 +1,5 @@
-
-<ion-content>
-<div class="wrapper" *ngIf="this.viewALL">
+<ion-content scrollY="false" [fullscreen]="true" style="--background: #2E3034;">
+  <div class="wrapper" *ngIf="this.viewALL">
     <!-- *** fut-player-card ***-->
     <div class="fut-player-card">
       <!-- Player Card Top-->
@@ -9,10 +8,11 @@
           <div class="player-rating"><span>97</span></div>
           <div class="player-position"><span>RW</span></div>
           <!-- <div class="player-nation"><img src="https://selimdoyranli.com/cdn/fut-player-card/img/argentina.svg" alt="Argentina" draggable="false"></div> -->
-          <div class="player-club"><img [src]="'../../../assets/images/' + pathLogoClub "  draggable="false"></div>
+          <div class="player-club"><img src="../../../../assets/images/ogcnice.png" draggable="false"></div>
         </div>
-        <div class="player-picture"><img src="https://selimdoyranli.com/cdn/fut-player-card/img/messi.png" draggable="false">
-         
+        <div class="player-picture"><img src="https://selimdoyranli.com/cdn/fut-player-card/img/messi.png"
+            draggable="false">
+
         </div>
       </div>
       <!-- Player Card Bottom-->
@@ -20,19 +20,31 @@
         <div class="player-info">
           <!-- Player Name-->
           <div class="player-name"><span>{{infos[0].name_user | uppercase}}</span></div>
+
           <!-- Player Features-->
           <div class="player-features">
-            <div class="player-features-col"><span>
+            <div class="player-features-col">
+              <span>
                 <div class="player-feature-value">{{averagePhy}}</div>
-                <div class="player-feature-title">PHY</div></span><span>
+
+                <div class="player-feature-title">PHY</div>
+              </span>
+              <span>
                 <div class="player-feature-value">{{averageTec}}</div>
-                <div class="player-feature-title">TCH</div></span>
+
+                <div class="player-feature-title">TCH</div>
+              </span>
             </div>
-            <div class="player-features-col"><span>
+            <div class="player-features-col">
+              <span>
                 <div class="player-feature-value">{{averageTac}}</div>
-                <div class="player-feature-title">TAC</div></span><span>
+                <div class="player-feature-title">TAC</div>
+              </span>
+
+              <span>
                 <div class="player-feature-value">{{averageMen}}</div>
-                <div class="player-feature-title">MTL</div></span>
+                <div class="player-feature-title">MTL</div>
+              </span>
             </div>
           </div>
         </div>

@@ -9,14 +9,15 @@ import { SkillComponent } from './views/player/skill/skill.component';
 import { StatComponent } from './views/player/stat/stat.component';
 
 const routes: Routes = [
+
 {
   path : "login",
   component : LoginComponent
  },
-{
- path : "home",
- component : HomeComponent
-},
+ {
+  path : "home",
+  component : HomeComponent
+ },
 {
   path : "stat",
   component : StatComponent
