@@ -5,14 +5,16 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AssocPlayerTeam {
+export class AssocUserPositionService {
 
   constructor(private http : HttpClient) { }
 
 
-  getTeamUser(data : any){
-  return this.http.post<any>(`${environment.apiUrl}/assoc_player_team/`,data)
+getPositionUser(data : any){
+  return this.http.post<any>(`${environment.apiUrl}/assoc_user_position/`,data)
 }
 
 }
+
+
 

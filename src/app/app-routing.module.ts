@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/auth/login/login.component';
 import { PasswordForgetComponent } from './views/auth/password-forget/password-forget.component';
+import { UpdatePasswordComponent } from './views/auth/update-password/update-password.component';
 import { AutoEvalComponent } from './views/player/auto-eval/auto-eval.component';
 import { HomeComponent } from './views/player/home/home.component';
 import { ProfileComponent } from './views/player/profile/profile.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
 {
   path : "password-forget",
   component : PasswordForgetComponent
+},
+{
+path : "update-password/:route",
+component : UpdatePasswordComponent
 },
 {
   path : "**",

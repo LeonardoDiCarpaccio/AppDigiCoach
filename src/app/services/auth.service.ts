@@ -34,14 +34,19 @@ export class AuthService {
        this.id_user = us
        return this.id_user
       }
- 
+
     }
- 
+
    }
    disconnect() {
     localStorage.removeItem('user')
 
     this.router.navigate(['/login'])
+  }
+
+  updatePassword(data : any){
+    return this.http.post<any>(`${environment.apiUrl}/auth/update-password`,data)
+
   }
 
   async getMe() {

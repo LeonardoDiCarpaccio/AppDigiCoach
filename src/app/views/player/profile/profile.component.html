@@ -1,50 +1,102 @@
 
+
+
 <ion-content style="--background: #2E3034;display: flex;" scrollY="false" [fullscreen]="true"  >
-<div class="d-flex flex-row">
+<div *ngIf="viewAll&&!editingMode" class="d-flex flex-row">
   <div class="m-auto mt-10"><img src="https://selimdoyranli.com/cdn/fut-player-card/img/messi.png" draggable="false"></div>
   <img class="editIcon" src="../../../../assets//images/edit.svg" alt="">
 
 </div>
 
-<div class="containTeamPositionBlock">
+<div class="containTeamPositionBlock" *ngIf="viewAll&&!editingMode">
 <div class="SpanTeamPositionBlock">
-  <span class="spanTeamPosition">U17</span>
+  <span class="spanTeamPosition ml-5" *ngFor="let item of arr_team">{{item.name}}</span>
 </div>
 
 <div class="SpanTeamPositionBlock">
-  <span class="spanTeamPosition" >Attaquant</span>
-  <span class="spanTeamPosition ml-5" >Ailier gauche</span>
+  <span class="spanTeamPosition ml-5" *ngFor="let item of arr_position" >{{item.name_position}}</span>
 </div>
 </div>
 
-<div class="containUserInfo">
+<div class="containUserInfo" *ngIf="viewAll && !editingMode">
 
-<div class="editIconBlock">
-  <img src="../../../../assets/images/edit.svg" alt="">
+<div  class="editIconBlock">
+  <img (click)="startEditingMode()" src="../../../../assets/images/edit.svg" alt="">
 
 </div>
 
   <div class="infoUserBlock">
     <img width="20px"  src="../../../../assets/images/ogcnice.png" alt="">
-    <span class="font ml-5"  >Lionel Messi</span>
+    <span class="font ml-5"  >{{usObject.name_user | titlecase}} {{usObject.firstname_user | titlecase}} </span>
   </div>
 
   <div class="infoUserBlock mt-5" >
      <img width="20px"  src="../../../../assets/images/birthday-cake.png" alt="">
-      <span  class="font ml-5" >16/07/2021</span>
+      <span  class="font ml-5" >{{usObject.date_birth_user === null ? '/' : usObject.date_birth_user}}</span>
   </div>
 
   <div class="infoUserBlock mt-5" >
     <img width="20px"  src="../../../../assets/images/gmail.png" alt="">
-     <span class="font ml-5" >Lionel.messi31@gmail.com</span>
+     <span class="font ml-5" >{{usObject.email_user}}</span>
   </div>
 
 
-<span class="mediumColor mt-20" >Modifier mon mot de passe</span>
-<span class="mediumColor mt-5" >Se deconnecter</span>
+<span class="mediumColor mt-20" (click)="goToUpdatePassword()" >Modifier mon mot de passe</span>
+<span class="mediumColor mt-5" (click)="disconnect()" >Se deconnecter</span>
 
 </div>
 
 
+
+<div class="d-flex w-100 mt-40 ion-justify-content-center flex-row " style="height: 60%;" *ngIf="editingMode">
+  <div style="height: 100%;width:80%;background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;" >
+<div class="w-100">
+<img (click)="startEditingMode()" style="width: 25px;" class="ml-5 mt-5" src="../../../../assets/images/back.png" alt="">
+</div>
+
+<div class="d-flex flex-row w-100 ion-justify-content-center mt-10">
+<span class="font">Modifier mes informations</span>
+</div>
+
+<div class="d-flex flex-col w-100 ion-align-items-center mt-10">
+
+  <div class="d-flex flex-row mt-10">
+    <ion-item style="width: 75%;" lines="none" style="--background: #2E3034;border-radius: 12px;border: 1px solid #6E7899;color: #FFFFFF">
+        <ion-input [(ngModel)]="update.name_user" name="email" type="text" placeholder="Nom"  ></ion-input>
+    </ion-item>
+    </div>
+
+    <div class=" d-flex flex-row mt-10">
+      <ion-item style="width: 75%;" lines="none" style="--background: #2E3034;border-radius: 12px;border: 1px solid #6E7899;color: #FFFFFF">
+        <ion-input [(ngModel)]="update.firstname_user" name="password" type="text" placeholder="Prénom" ></ion-input>
+      </ion-item>
+    </div>
+    <div  style="width: 75%;"class=" d-flex flex-col mt-10">
+      <ion-item lines="none" style="--background: #2E3034;border-radius: 12px;border: 1px solid #6E7899;color: #FFFFFF">
+
+        <ion-datetime  [(ngModel)]="update.date_birth_user" ></ion-datetime>
+
+      </ion-item>
+      <ion-label class="mediumColor" >*optionnel</ion-label>
+
+    </div>
+
+    <div class=" d-flex flex-row w-100 mt-10 ion-justify-content-center">
+      <button (click)="updateUser()" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="font">Valider</button>
+
+    </div>
+
+
+
+  </div>
+
+  </div>
+</div>
+
+
+
 </ion-content>
+
+
+
   <app-footer></app-footer>
