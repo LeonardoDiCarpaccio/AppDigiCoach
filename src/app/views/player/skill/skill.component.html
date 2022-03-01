@@ -1,57 +1,39 @@
-
-<ion-content scrollY="false" [fullscreen]="true"  style="--background : #2E3034;">
-
-  <div class="d-flex w-100 mt-20" >
-    <span  class="fontTitle">Compétences</span>
-
+<ion-content scrollY="false" [fullscreen]="true" style="--background : #2E3034;">
+  <div class="d-flex w-100 mt-20">
+    <span class="fontTitle">Compétences</span>
   </div>
 
   <div class="d-flex w-100 h-3-5 mt-5">
-
-  <div class="containSlideTitle">
-
-<div class="currentTypeSkill" >
-  <span class="currentTypeSkillfont" >{{arrTitle[currentIndex]}}</span>
-  </div>
-
-  <div class="nextTypeSkill" >
-    <span class="nextTypeSkillFont" >{{arrTitle[currentIndex + 1]}}</span>
-  </div>
-
-
-  </div>
-  </div>
-
-  <ion-slides  (ionSlideNextStart)="goRightSlide()"  (ionSlidePrevStart)="goLeftSlide()"  pager="true" class="slidesContainer" [options]="slideOpts">
-
-    <ion-slide  *ngFor="let item of arr" class="h-90">
-
-      <div  class="slideItem">
-
-  <div *ngFor="let item of arr" class="skillItem">
-
-    <div class="leftSideSkillItem">
-
-      <span  class="font nameSkill">Jeu d'épaule</span>
-      <span  class="font markSkill">Note : 2</span>
+    <div class="containSlideTitle" style="width: 80%;">
+<!-- we iterate on arrTitle, when we change the slide, currentIndex is the index of current slide, so the ngClass is based currentIndex and the index of the ngFor -->
+      <div [ngClass]="i === currentIndex ? 'currentTypeSkill' : 'nextTypeSkill'"   *ngFor="let item of arrTitle;let i = index" >
+        <span [ngClass]="i === currentIndex ? 'currentTypeSkillfont' : 'nextTypeSkillFont'" >{{item}}</span>
+      </div>
     </div>
-
-    <div class="rightSideSkillItem">
-      <span style="margin: 0;margin-top: 10px;" class="font ">Voir plus</span>
-
-  <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
-    </div>
-
   </div>
 
+  <ion-slides *ngIf="viewAll" (ionSlideNextStart)="goRightSlide()" (ionSlidePrevStart)="goLeftSlide()" pager="true"
+    class="slidesContainer" [options]="slideOpts">
+
+    <!-- one slide per title -->
+    <ion-slide *ngFor="let key of arrTitle" class="h-90">
+<!-- skillObj got the same key of skillsObj so we can use it to iterate on the good array -->
+      <div class="slideItem">
+        <div *ngFor="let item of skillsObj[key]" class="skillItem">
+
+          <div class="leftSideSkillItem">
+            <span class="font nameSkill">{{item.name_skill}}</span>
+            <span class="font markSkill">Note : {{item.mark}}</span>
+          </div>
+
+          <div class="rightSideSkillItem">
+            <span style="margin: 0;margin-top: 10px;" class="font ">Voir plus</span>
+            <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
+          </div>
+
+        </div>
       </div>
     </ion-slide>
-
   </ion-slides>
-
-
-
-
-
 </ion-content>
-  <app-footer></app-footer>
+<app-footer></app-footer>

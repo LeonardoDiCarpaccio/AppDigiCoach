@@ -9,13 +9,12 @@ export class MarkService {
 
   constructor(private http : HttpClient) { }
 
-  
+
   getMark(data : any){
     return this.http.post<any>(`${environment.apiUrl}/mark`,data)
   }
 
   updateMark(data : any){
-      console.log("fire",data)
     return this.http.post<any>(`${environment.apiUrl}/mark/update`,data)
   }
 

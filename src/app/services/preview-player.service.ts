@@ -13,4 +13,12 @@ export class PreviewPlayerService {
     return this.http.post<any>(`${environment.apiUrl}/preview/previewPlayer/getAverageByTypeSkillAndPlayer`,data)
   }
 
+  getHasPendingAutoEval(data : any){
+    return this.http.post<any>(`${environment.apiUrl}/preview/previewPlayer/getHasPendingAutoEval`,data)
+  }
+
+  getSkillByPlayer(data : any){
+    return this.http.post<any>(`${environment.apiUrl}/preview/previewTrainer/getSkillByPlayer`,data)
+  }
+
 }
