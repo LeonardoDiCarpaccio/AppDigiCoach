@@ -21,4 +21,8 @@ export class PreviewPlayerService {
     return this.http.post<any>(`${environment.apiUrl}/preview/previewTrainer/getSkillByPlayer`,data)
   }
 
+  getCurrentAndHistoAutoEval(data : any){
+    return this.http.post<any>(`${environment.apiUrl}/preview/previewPlayer/getCurrentAndHistoAutoEval`,data)
+  }
+
 }
