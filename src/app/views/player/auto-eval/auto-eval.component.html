@@ -52,15 +52,29 @@
 
 
 
-      <div style="width: 100%;height: 10%;display: flex;margin-top: 10%;">
+      <div *ngIf="!isAddingMark" style="width: 100%;height: 10%;display: flex;margin-top: 10%;">
         <span  class="fontTitle">{{returnActionToDo(autoEvalObject.current[item.key | toString].array)}}</span>
       </div>
 
 
-      <div style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
-        <button style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="fontTitle">Se noter</button>
+      <div *ngIf="!isAddingMark && ngIfMarkMyselfBtn(autoEvalObject.current[item.key | toString].array)" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
+        <button (click)="markMyself(item.key)" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="fontTitle">Se noter</button>
       </div>
 
+
+   <div *ngIf="isAddingMark" class="d-flex w-100 ion-justify-content-center">
+    <ion-item style="--background: #3F4042;width: 80%;border: 1px solid #6E7899;border-radius: 12px;" lines="none">
+      <ion-label class="fontTitle">Se noter</ion-label>
+      <ion-select [(ngModel)]="markPlayer" >
+        <ion-select-option *ngFor="let item of arr" value="{{item}}">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+   </div>
+
+
+   <div *ngIf="isAddingMark && markPlayer != ''" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
+    <button (click)="validMark()" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="fontTitle">Valider ma note</button>
+  </div>
 
 
     </div>

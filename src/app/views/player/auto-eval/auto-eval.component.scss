@@ -31,6 +31,12 @@ opacity: 0.5;
 }
 
 
+ion-select::part(icon) { color: #FFFFFF !important; }
+
+ion-select::part(text) { color: #FFFFFF !important; }
+
+
+
 
 .currentAutoEvalFocused{
   width: 55%; height: 70%;background-color: #2E3034;border-radius: 12px;display: flex;margin-left: 2%;
