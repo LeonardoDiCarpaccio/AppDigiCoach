@@ -10,7 +10,10 @@ import { PreviewPlayerService } from 'src/app/services/preview-player.service';
 export class SkillComponent implements OnInit {
   skillsObj: any
   arrTitle: any = []
+
   viewAll = false
+  displayComment : boolean = false
+
   currentIndex = 0
 
   constructor(private previewPlayer: PreviewPlayerService, private auth: AuthService) { }
@@ -27,6 +30,7 @@ export class SkillComponent implements OnInit {
   // we push every key of skillObj in array title, we ngFor on arrTitle, we've one slide per title (mental,physique)
   async getSkillsListPlayer() {
     await this.previewPlayer.getSkillByPlayer({ id_player: this.auth.getId() }).subscribe((res) => {
+      console.log(res,"res")
       this.skillsObj = res
       for (const [key, value] of Object.entries(res)) {
         this.arrTitle.push(key)
@@ -46,6 +50,10 @@ export class SkillComponent implements OnInit {
       this.currentIndex++
     }
   }
-
+  commentDisplayTest(){
+   
+    this.displayComment = !this.displayComment
+    console.log(this.displayComment,"this.displayComment")
+  }
 
 }

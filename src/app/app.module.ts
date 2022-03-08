@@ -21,10 +21,11 @@ import { FormsModule } from '@angular/forms';
 import { AutoEvalComponent } from './views/player/auto-eval/auto-eval.component';
 import { UpdatePasswordComponent } from './views/auth/update-password/update-password.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ToStringPipe } from './pipe/pipe';
 
 @NgModule({
   declarations: [AppComponent,LoginComponent,FooterComponent,PasswordForgetComponent,SkillComponent,HomeComponent,ProfileComponent,StatComponent,
-    AutoEvalComponent,UpdatePasswordComponent,SnackbarComponent],
+    AutoEvalComponent,UpdatePasswordComponent,SnackbarComponent,ToStringPipe],
   entryComponents: [],
   imports: [MatSnackBarModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FormsModule, NoopAnimationsModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

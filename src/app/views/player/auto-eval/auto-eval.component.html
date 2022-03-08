@@ -9,25 +9,28 @@
 <div style="display: flex;width: 100%;height: 3.5% ;margin-top: 5%;">
 <div style="margin: auto;background-color: #3F4042; width: 50%;height: 100%;border-radius: 12px;display: flex;flex-direction: row;align-items: center;">
 
-<div [ngClass]="IsCurrentAutoEval ? 'currentAutoEvalFocused' : 'currentAutoEvalNotFocused'" >
-<span [ngClass]="!IsCurrentAutoEval ? 'fontOpacity' : 'font'">En cours</span>
+<div *ngFor="let item of arrayTitle" [ngClass]="IsCurrentAutoEval ? 'currentAutoEvalFocused' : 'currentAutoEvalNotFocused'" >
+<span [ngClass]="!IsCurrentAutoEval ? 'fontOpacity' : 'font'">{{item}}</span>
 </div>
 
-
+<!--
 <div  [ngClass]="!IsCurrentAutoEval ? 'histoAutoEvalFocused' : 'histoAutoEvalNotFocused'"   >
   <span [ngClass]="IsCurrentAutoEval ? 'fontOpacity' : 'font'" >Passées</span>
 </div>
-
+ -->
 
 </div>
 </div>
 
-<ion-slides  (ionSlideNextStart)="handleIsCurrentAutoEval()"  (ionSlidePrevStart)="handleIsCurrentAutoEval()"  pager="true" style="--bullet-background: #cccccc;margin-top: 15%;height: 60%;width:80%;background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;" [options]="slideOpts">
-  <ion-slide>
+<ion-slides *ngIf="viewAll" (ionSlideNextStart)="handleIsCurrentAutoEval()"  (ionSlidePrevStart)="handleIsCurrentAutoEval()"  pager="true" style="--bullet-background: #cccccc;margin-top: 15%;height: 60%;width:80%;background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;" [options]="slideOpts">
+  <ion-slide *ngFor="let item of autoEvalObject.current | keyvalue" >
 
     <div style="height: 100%;width: 100%;">
       <div style="width: 100%;height: 10%;display: flex;">
-        <span  class="fontTitle">Auto-Evaluation n°2</span>
+        <!-- <span  class="fontTitle">{{item.value.auto_eval.name}}</span> -->
+        <span  class="fontTitle">{{autoEvalObject.current[item.key | toString].auto_eval.name}}</span>
+
+
       </div>
 
       <div style="width: 100%;height: 5%;display: flex;margin-top: 10%;">
@@ -35,8 +38,7 @@
       </div>
 
       <div style="width: 100%;height: 10%;display: flex;flex-direction: row;margin-top: 2%;">
-        <span style="margin: 0;margin-left: 5%;" class="fontTitle"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;"  class="font">Passe décisive</ion-badge></span>
-        <span style="margin: 0;margin-left: 5%;" class="fontTitle"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;" class="font">Vision de jeu</ion-badge></span>
+        <span *ngFor="let skill of autoEvalObject.current[item.key | toString].auto_eval.skills" style="margin: 0;margin-left: 5%;" class="fontTitle"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;" class="font">{{autoEvalObject.skills[skill].name_skill}}</ion-badge></span>
       </div>
 
 
@@ -45,13 +47,13 @@
       </div>
 
       <div style="width: 100%;height: 10%;display: flex;">
-        <span style="margin: 0;margin-left: 5%;" class="fontTitle">Du 22/02/2022 au 28/02/2022</span>
+        <span style="margin: 0;margin-left: 5%;" class="fontTitle">Du {{autoEvalObject.current[item.key | toString].auto_eval.date_begin}} au {{autoEvalObject.current[item.key | toString].auto_eval.date_end}}</span>
       </div>
 
 
 
       <div style="width: 100%;height: 10%;display: flex;margin-top: 10%;">
-        <span  class="fontTitle">Vous ne vous êtes pas noté aujourd'hui</span>
+        <span  class="fontTitle">{{returnActionToDo(autoEvalObject.current[item.key | toString].array)}}</span>
       </div>
 
 
@@ -64,31 +66,7 @@
     </div>
 
   </ion-slide>
-  <ion-slide style="height: 90%;">
-    <div style="height: 100%;width: 100%;display: flex;flex-direction: column;overflow-y: auto;align-items: center;">
 
-<div *ngFor="let item of arr" style="width: 90%;height: 70px;background-color: #2E3034;border-radius: 12px;margin-top: 15px;display: flex;flex-direction: row;">
-
-  <div style="display: flex;flex-direction: column;width: 70%;align-items: flex-start;margin-left: 5%;height: 70px;">
-    <span style="margin: 0;margin-top: 15px;" class="font">Auto eval n°1</span>
-    <span style="margin: 0;margin-top: 5px;" class="font">Du 22/02/2022 au 28/02/2022</span>
-  </div>
-
-  <div style="width: 30%;display: flex;flex-direction: column;align-items: center;height: 70px;">
-    <span style="margin: 0;margin-top: 10px;" class="font">Voir plus</span>
-
-<img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
-  </div>
-
-</div>
-
-
-
-
-
-
-    </div>
-  </ion-slide>
 
 </ion-slides>
 

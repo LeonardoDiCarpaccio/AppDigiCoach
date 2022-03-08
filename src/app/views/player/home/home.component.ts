@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   autoEvalNotif : any
 
   viewALL : boolean = false
-  Notif : boolean = true
+  // Notif : boolean = true
 
   pathLogoClub= ''
   AltClub = ''
