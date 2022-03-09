@@ -51,10 +51,10 @@ export class HomeComponent implements OnInit {
 async skillAverage(){
  await this.previewPlayer.getPlayerAverageMarkPerSkillType({id_user : this.auth.getId()}).subscribe((res)=>{
 
-this.averagePhy = res.find((name)=> name.name_type_skill=="physique") ? res.find((name)=> name.name_type_skill=="physique").average + "/4" : "N/N"
-this.averageTac = res.find((name)=> name.name_type_skill=="tactique") ? res.find((name)=> name.name_type_skill=="tactique").average + "/4": "N/N"
-this.averageTec = res.find((name)=> name.name_type_skill=="technique") ? res.find((name)=> name.name_type_skill=="technique").average + "/4" : "N/N"
-this.averageMen = res.find((name)=> name.name_type_skill=="mental") ? res.find((name)=> name.name_type_skill=="mental").average + "/4" : "N/N"
+this.averagePhy = res.find((name)=> name.name_type_skill=="Physique") ? parseInt(res.find((name)=> name.name_type_skill=="Physique").average_percentage)  : "N/N"
+this.averageTac = res.find((name)=> name.name_type_skill=="Tactique") ? parseInt(res.find((name)=> name.name_type_skill=="Tactique").average_percentage) : "N/N"
+this.averageTec = res.find((name)=> name.name_type_skill=="Technique") ? parseInt(res.find((name)=> name.name_type_skill=="Technique").average_percentage)  : "N/N"
+this.averageMen = res.find((name)=> name.name_type_skill=="Mental") ?   parseInt(res.find((name)=> name.name_type_skill=="Mental").average_percentage)  : "N/N"
 
 
 },err=>{
@@ -64,8 +64,7 @@ this.averageMen = res.find((name)=> name.name_type_skill=="mental") ? res.find((
   }
 
   openSnackBarOn() {
-
-    if(this.autoEvalNotif){
+    if(this.autoEvalNotif.hasPendingAutoEval){
 
       this._snackbar.open("Auto eval en cour", 'GO', {panelClass: 'my-custom-snackbar'}).afterDismissed().subscribe(info => {
         if (info.dismissedByAction === true) {

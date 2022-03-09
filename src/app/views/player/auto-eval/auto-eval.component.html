@@ -1,12 +1,12 @@
 
-<ion-content scrollY="false" [fullscreen]="true" style="--background: #2E3034;">
+<ion-content  scrollY="false" [fullscreen]="true" style="--background: #2E3034;">
 
 <div style="display: flex;width: 100%; margin-top: 20%;">
   <span  class="fontTitle">Auto-Evaluation</span>
 
 </div>
 
-<div style="display: flex;width: 100%;height: 3.5% ;margin-top: 5%;">
+<div *ngIf="viewAll && autoEvalObject.hasPendingAutoEval" style="display: flex;width: 100%;height: 3.5% ;margin-top: 5%;">
 <div style="margin: auto;background-color: #3F4042; width: 50%;height: 100%;border-radius: 12px;display: flex;flex-direction: row;align-items: center;">
 
 <div *ngFor="let item of arrayTitle" [ngClass]="IsCurrentAutoEval ? 'currentAutoEvalFocused' : 'currentAutoEvalNotFocused'" >
@@ -23,6 +23,16 @@
 </div>
 
 <ion-slides *ngIf="viewAll" (ionSlideNextStart)="handleIsCurrentAutoEval()"  (ionSlidePrevStart)="handleIsCurrentAutoEval()"  pager="true" style="--bullet-background: #cccccc;margin-top: 15%;height: 60%;width:80%;background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;" [options]="slideOpts">
+  <ion-slide *ngIf="!autoEvalObject.hasPendingAutoEval">
+    <div style="width: 100%;height: 10%;display: flex;">
+      <!-- <span  class="fontTitle">{{item.value.auto_eval.name}}</span> -->
+      <span  class="fontTitle">Pas d'auto évaluation en cours</span>
+
+
+    </div>
+
+
+  </ion-slide>
   <ion-slide *ngFor="let item of autoEvalObject.current | keyvalue" >
 
     <div style="height: 100%;width: 100%;">
@@ -87,4 +97,7 @@
 
 
   </ion-content>
+
+
+
   <app-footer></app-footer>

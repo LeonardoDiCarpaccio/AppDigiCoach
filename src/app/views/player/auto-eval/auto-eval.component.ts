@@ -28,7 +28,7 @@ slideOpts = {
 isAddingMark = false
   async ngOnInit() {
 this.autoEvalObject = await this.previewPlayerServices.getCurrentAndHistoAutoEval({id_player : this.auth.getId()}).toPromise()
-this.initiateArrayTitle()
+this.autoEvalObject.hasPendingAutoEval ? this.initiateArrayTitle() : null
 this.viewAll = true
   }
 
@@ -97,7 +97,6 @@ handleIsCurrentAutoEval(){
 async validMark(){
   await this.assoc_mark_auto_eval_player.updateassoc_player_mark_auto_eval({where : {id_auto_eval :  parseInt(this.id_auto_eval_adding_mark),
     date : this.helpers.dateNow(true),id_player : this.auth.getId()},update : {mark_player : parseInt(this.markPlayer)}}).subscribe((res)=>{
-      alert("Ok")
       this.initPage()
       this.reload()
   },err=>{
