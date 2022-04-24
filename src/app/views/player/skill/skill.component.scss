@@ -64,7 +64,11 @@ opacity: 0.5;
 }
 
 .skillItem{
-  width: 90%;height: 70px;background-color: #2E3034;border-radius: 12px;margin-top: 15px;
+  width: 90%;height: 70px;
+}
+
+.cardItem{
+  background-color: #2E3034;border-radius: 12px;margin-top: 25px;width: 100%;display: flex;flex-direction: column;
 }
 
 .leftSideSkillItem{

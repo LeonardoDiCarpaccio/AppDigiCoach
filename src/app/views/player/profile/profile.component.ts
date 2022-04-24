@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
 
   viewAll = false
  async ngOnInit() {
-    this.arr_position = await this.assocPlayerPositionServices.getPositionUser({where : {id_user : this.auth.getId()},join : {type : "INNER JOIN",tableJoin : "position",keyFrom : "id_position",keyJoin : "id"}}).toPromise()
+    this.arr_position = await this.assocPlayerPositionServices.getPositionUser({where : {id_user : this.auth.getId()},join : {type : "INNER JOIN",tableJoin : "poste",keyFrom : "id_position",keyJoin : "id"}}).toPromise()
     this.arr_team = await this.assocPlayerTeamServices.getTeamUser({where : {id_user : this.auth.getId()},join : {type : "INNER JOIN",tableJoin : "team",keyFrom : "id_team",keyJoin : "id"}}).toPromise()
     this.getUser()
   }

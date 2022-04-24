@@ -20,21 +20,10 @@
 <!-- skillObj got the same key of skillsObj so we can use it to iterate on the good array -->
       <div class="slideItem">
 
-        <!-- <ion-accordion *ngFor="let item of skillsObj[key]"   value="colors" toggle-icon="arrow-down-circle">
-          <ion-item slot="header">
-            <ion-label>{{item.name_skill}}</ion-label>
-            <ion-content>Note : {{item.mark}}</ion-content>
-          </ion-item>
 
-          <ion-list slot="content">
-            <ion-item>
-              <ion-label class="font nameSkill">Commentaire : {{item.comment_mark}}</ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-accordion> -->
 
         <div *ngFor="let item of skillsObj[key]" class="skillItem">
-  <div style="width: 100%;display: flex;flex-direction: column;">
+  <div class="cardItem">
     <div style="display : flex ">
       <div class="leftSideSkillItem">
         <span class="font nameSkill">{{item.name_skill}}</span>
@@ -46,12 +35,17 @@
         <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
       </div>
 
+</div> <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; margin-bottom: 10px;" >
+  <span class="font nameSkill">Commentaire : {{item.comment_mark}}zrgzzeezezffzezfezefzezfezfezezfezezff</span>
+</div>
+<!--
+  <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; margin-bottom: 10px;" >
+    <span class="font nameSkill">Commentaire : {{item.comment_mark}}zrgzzeezezffzezfezefzezfezfezezfezezff</span>
+  </div> --><!--
+  <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; margin-bottom: 10px;" >
+    <span class="font nameSkill">Commentaire : {{item.comment_mark}}zrgzzeezezffzezfezefzezfezfezezfezezff</span>
+  </div> -->
 
-</div>
-<div *ngIf="displayComment==true"   style="height: 70px;background-color: #2E3034;border-radius: 12px;width: auto;margin-top: -6%;" >
-  <span class="font nameSkill">Commentaire : {{item.comment_mark}}</span>
-  <!-- <span class="font markSkill">Note : {{item.mark}}</span> -->
-</div>
   </div>
 
         </div>
