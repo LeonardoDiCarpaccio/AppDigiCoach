@@ -6,7 +6,7 @@
 
 </div>
 
-<div *ngIf="viewAll && autoEvalObject.hasPendingAutoEval" style="display: flex;width: 100%;height: 3.5% ;margin-top: 5%;">
+<div *ngIf="viewAll && autoEvalObject.hasPendingAutoEval && arrayDisplayPreviousMark.length ==0" style="display: flex;width: 100%;height: 3.5% ;margin-top: 5%;">
 <div style="margin: auto;background-color: #3F4042; width: 50%;height: 100%;border-radius: 12px;display: flex;flex-direction: row;align-items: center;">
 
 <div *ngFor="let item of arrayTitle" [ngClass]="IsCurrentAutoEval ? 'currentAutoEvalFocused' : 'currentAutoEvalNotFocused'" >
@@ -22,7 +22,7 @@
 </div>
 </div>
 
-<ion-slides *ngIf="viewAll" (ionSlideNextStart)="handleIsCurrentAutoEval()"  (ionSlidePrevStart)="handleIsCurrentAutoEval()"  pager="true" style="--bullet-background: #cccccc;margin-top: 15%;height: 60%;width:80%;background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;" [options]="slideOpts">
+<ion-slides *ngIf="viewAll && arrayDisplayPreviousMark.length ==0" (ionSlideNextStart)="handleIsCurrentAutoEval()"  (ionSlidePrevStart)="handleIsCurrentAutoEval()"  pager="true" style="--bullet-background: #cccccc;margin-top: 15%;height: 60%;width:80%;background-color: #3F4042;border-radius: 12px;border: 1px solid #6E7899;" [options]="slideOpts">
   <ion-slide *ngIf="!autoEvalObject.hasPendingAutoEval">
     <div style="width: 100%;height: 10%;display: flex;">
       <!-- <span  class="fontTitle">{{item.value.auto_eval.name}}</span> -->
@@ -65,7 +65,9 @@
       <div *ngIf="!isAddingMark" style="width: 100%;height: 10%;display: flex;margin-top: 10%;">
         <span  class="fontTitle">{{returnActionToDo(autoEvalObject.current[item.key | toString].array)}}</span>
       </div>
-
+      <div *ngIf="alreadyMarked" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
+      <button (click)="seePreviousMark(item.key)" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="fontTitle">Voir les notes précédentes</button>
+      </div>
 
       <div *ngIf="!isAddingMark && ngIfMarkMyselfBtn(autoEvalObject.current[item.key | toString].array)" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
         <button (click)="markMyself(item.key)" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="fontTitle">Se noter</button>

@@ -25,10 +25,14 @@ slideOpts = {
   speed: 400
 };
 
+alreadyMarked = false
+arrayDisplayPreviousMark : any = []
 isAddingMark = false
   async ngOnInit() {
 this.autoEvalObject = await this.previewPlayerServices.getCurrentAndHistoAutoEval({id_player : this.auth.getId()}).toPromise()
 this.autoEvalObject.hasPendingAutoEval ? this.initiateArrayTitle() : null
+const date = this.helpers.dateNow(true)
+console.log("date",date)
 this.viewAll = true
   }
 
@@ -45,6 +49,14 @@ this.viewAll = true
   }
 
 
+  seePreviousMark(key : any){
+   let arr = this.autoEvalObject.current[key].array
+   console.log("arr",arr)
+   let date = new Date(this.helpers.dateNow(true))
+   this.arrayDisplayPreviousMark = arr.filter((autoeval : any)=>new Date(autoeval.date) < date)
+   console.log("this.arrayDisplayPreviousMark",this.arrayDisplayPreviousMark)
+  }
+
   initiateArrayTitle(){
     for (const [key,value] of Object.entries(this.autoEvalObject.current)){
       this.arrayTitle.push('En cours')
@@ -60,8 +72,10 @@ this.viewAll = true
     console.log("date",date)
     let autoEvalToday = arrAutoEval.find((l)=>l.date == date)
     if(autoEvalToday.mark_player == null){
+
       return "Vous ne vous êtes pas noté aujourd'hui"
     }else{
+      this.alreadyMarked = true
       return "Ma note : " + autoEvalToday.mark_player
     }
   }
@@ -78,9 +92,7 @@ return true
     }
   }
 
-  next(){
 
-  }
 
 
   markMyself(id : any){

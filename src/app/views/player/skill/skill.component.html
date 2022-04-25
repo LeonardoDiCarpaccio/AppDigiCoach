@@ -22,9 +22,9 @@
 
 
 
-        <div *ngFor="let item of skillsObj[key]" class="skillItem">
+        <div *ngFor="let item of skillsObj[key]" class="skillItem" [ngClass]="displayComment == true ? 'mb-50' : ''">
   <div class="cardItem">
-    <div style="display : flex ">
+    <div style="display : flex  ">
       <div class="leftSideSkillItem">
         <span class="font nameSkill">{{item.name_skill}}</span>
         <span class="font markSkill">Note : {{item.mark}}</span>
@@ -35,18 +35,14 @@
         <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
       </div>
 
-</div> <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; margin-bottom: 10px;" >
-  <span class="font nameSkill">Commentaire : {{item.comment_mark}}zrgzzeezezffzezfezefzezfezfezezfezezff</span>
 </div>
-<!--
-  <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; margin-bottom: 10px;" >
-    <span class="font nameSkill">Commentaire : {{item.comment_mark}}zrgzzeezezffzezfezefzezfezfezezfezezff</span>
-  </div> --><!--
-  <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; margin-bottom: 10px;" >
-    <span class="font nameSkill">Commentaire : {{item.comment_mark}}zrgzzeezezffzezfezefzezfezfezezfezezff</span>
-  </div> -->
+
+  <div *ngIf="displayComment==true"   style="height: auto;background-color: #2E3034;border-radius: 12px;width: auto; " >
+    <span class="font nameSkill">Commentaire : {{item.comment_mark}}</span>
+  </div>
 
   </div>
+
 
         </div>
       </div>
