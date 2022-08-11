@@ -8,6 +8,7 @@
       }
     }
     .tab-bar {
+      
       --border: 0;
       --background: transparent;
       position: absolute;
@@ -25,6 +26,8 @@
         position: absolute;
       }
       .tab-bar-btn {
+        margin-bottom: env(safe-area-inset-bottom); /* fix notch ios*/
+
         flex: 1;
         display:flex;
         justify-content: center;
@@ -38,6 +41,8 @@
 
       }
       svg {
+        margin-bottom: env(safe-area-inset-bottom); /* fix notch ios*/
+
         width: 72px;
         margin-top: 19px;
         path{

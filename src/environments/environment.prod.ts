@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl : "https://mon-menu-digital.fr/digicoach"
+  apiUrl : "https://cryptoelection.fr/digicoach"
 
 };

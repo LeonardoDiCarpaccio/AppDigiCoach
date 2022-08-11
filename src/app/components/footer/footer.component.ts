@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +9,12 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   route=""
-  constructor(private router : Router) { }
+  ios:any
+  android:any
+  constructor(private router : Router, public platform : Platform) { 
+    this.ios = platform.is('ios');
+    this.android = platform.is('android');
+  }
   ngOnInit() {
     this.route = this.router.url
   }
