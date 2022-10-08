@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl : "https://cryptoelection.fr/digicoach"
+  apiUrl : "http://localhost:3000/digicoach"
 
 };
 
