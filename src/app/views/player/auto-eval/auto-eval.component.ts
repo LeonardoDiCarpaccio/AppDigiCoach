@@ -18,7 +18,8 @@ export class AutoEvalComponent implements OnInit {
   displayComment: boolean = false;
   idSelected: any;
   IsCurrentAutoEval = 'current';
-
+  displayHisto: any;
+  idHistoSelected: any;
   constructor(
     private previewPlayerServices: PreviewPlayerService,
     private auth: AuthService,
@@ -41,7 +42,6 @@ export class AutoEvalComponent implements OnInit {
       .toPromise();
     this.autoEvalObject.hasPendingAutoEval ? this.initiateArrayTitle() : null;
     const date = this.helpers.dateNow(true);
-    console.log('this.autoEvalObject', this.autoEvalObject);
     this.IsCurrentAutoEval = 'current';
 
     this.viewAll = true;
@@ -60,13 +60,21 @@ export class AutoEvalComponent implements OnInit {
     this.IsCurrentAutoEval = 'current';
   }
 
-  seePreviousMark(key: any) {
-    let arr = this.autoEvalObject.current[key].array;
-    let date = new Date(this.helpers.dateNow(true));
-    this.arrayDisplayPreviousMark = arr.filter(
-      (autoeval: any) => new Date(autoeval.date) < date
-    );
-    console.log(this.arrayDisplayPreviousMark, 'arrayDisplayPreviousMark');
+  seePreviousMark(key: any, type: string) {
+    if (type == 'current') {
+      let arr = this.autoEvalObject.current[key].array;
+      let date = new Date(this.helpers.dateNow(true));
+      this.arrayDisplayPreviousMark = arr.filter(
+        (autoeval: any) => new Date(autoeval.date) < date
+      );
+    }
+    if (type == 'histo') {
+      this.arrayDisplayPreviousMark = this.autoEvalObject.histo[key].array;
+      let date = new Date(this.helpers.dateNow(true));
+      // this.arrayDisplayPreviousMark = arr.filter(
+      //   (autoeval: any) => new Date(autoeval.date) < date
+      // );
+    }
   }
 
   initiateArrayTitle() {
@@ -83,8 +91,6 @@ export class AutoEvalComponent implements OnInit {
       }
       this.arrayTitleKey.push(key);
     }
-    console.log(this.arrayTitle, 'arrayTitle');
-    console.log(this.arrayTitleKey, 'arrayTitleKey');
   }
 
   returnActionToDo(arrAutoEval: any) {
@@ -118,7 +124,6 @@ export class AutoEvalComponent implements OnInit {
   }
 
   handleIsCurrentAutoEval(position: any) {
-    console.log(position, 'position');
     this.IsCurrentAutoEval = position;
   }
 
@@ -154,12 +159,17 @@ export class AutoEvalComponent implements OnInit {
       this.displayComment = !this.displayComment;
       this.idSelected = null;
     } else {
-      console.log(id, 'ididid');
       this.displayComment = !this.displayComment;
       this.idSelected = id;
-      console.log(this.idSelected, ' this.idSelected');
-      console.log(this.displayComment, 'this.displayComment');
     }
   }
-  previous() {}
+  displayAutoEvalHistoSelected(id: any) {
+    if (this.idHistoSelected == id) {
+      this.displayHisto = !this.displayHisto;
+      this.idHistoSelected = null;
+    } else {
+      this.displayHisto = !this.displayHisto;
+      this.idHistoSelected = id;
+    }
+  }
 }

@@ -81,13 +81,16 @@
             <div style="width: 95%;height: 5%;text-align: justify;">
               <span style="margin: 0;margin-left: 5%;" class="font">Compétences évalués :</span>
             </div>
-            <div style="width: 100%;height: 10%; margin-top: 2%;display: flex;">
+            <div *ngIf="autoEvalObject.current[item.key | toString].auto_eval.skills !=null && autoEvalObject.current[item.key | toString].auto_eval.text==null" style="width: 100%;height: 10%; margin-top: 2%;display: flex;">
               <span *ngFor="let skill of autoEvalObject.current[item.key | toString].auto_eval.skills" style="margin: 0;margin-left: 5%;" class="font"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;" class="font">{{autoEvalObject.skills[skill].name_skill}}</ion-badge></span>
+            </div> 
+            <div *ngIf="autoEvalObject.current[item.key | toString].auto_eval.text!=null && autoEvalObject.current[item.key | toString].auto_eval.skills == null" style="width: 100%;height: 10%; margin-top: 2%;display: flex;">
+              <span style="margin: 0;margin-left: 5%;" class="font"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;" class="font">{{autoEvalObject.current[item.key | toString].auto_eval.text }}</ion-badge></span>
             </div>         
           </div>
 
           <div *ngIf="alreadyMarked" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
-            <button (click)="seePreviousMark(item.key)" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="font">Voir les notes précédentes</button>
+            <button (click)="seePreviousMark(item.key,'current')" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="font">Voir les notes précédentes</button>
           </div>
       
           <div *ngIf="!isAddingMark && ngIfMarkMyselfBtn(autoEvalObject.current[item.key | toString].array)" style="width: 100%;height: 10%;display: flex;margin-top: 3%;">
@@ -142,9 +145,9 @@
 
         <div class="rightSideSkillItem" style=" display: flex;
         flex-direction: column-reverse;
-        align-items: center;margin-right: 5%;"  (click)="commentDisplayTest(autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval)">
-          <span *ngIf="(autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval!=idSelected)"  style="margin: 0;margin-top: 10px;" class="font " >Voir plus</span>
-          <span *ngIf="(autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval==idSelected)"  style="margin: 0;margin-top: 10px;" class="font " >Voir moins</span>
+        align-items: center;margin-right: 5%;"  (click)="displayAutoEvalHistoSelected(autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval)">
+          <span *ngIf="(autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval!=idHistoSelected)"  style="margin: 0;margin-top: 10px;" class="font " >Voir plus</span>
+          <span *ngIf="(autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval==idHistoSelected)"  style="margin: 0;margin-top: 10px;" class="font " >Voir moins</span>
 
           <img style="width: 25px;margin-top: 5px;" src="../../../../assets/images/eye (2).png" alt="">
         </div>
@@ -152,16 +155,16 @@
   </div>
 
     
-    <div *ngIf="displayComment==true && (autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval==idSelected)"   
+    <div *ngIf="displayHisto==true && (autoEvalObject.histo[''+item.key+''].auto_eval.id_auto_eval==idHistoSelected)"   
     style="margin-top: 2%;height: auto;background-color: #2E3034;border-radius: 12px;width: auto; " >
       <div style="display : flex ;flex-direction: row;text-align: center;
       margin-top: 2%;">
         <div style="width: 55%;height: 5%;">
-          <span style="margin: 0;margin-left: 5%;" class="font">Durée auto-eval : </span>
+          <span style="margin: 0;margin-left: 5%;" class="font">Auto-eval finit depuis le : </span>
         </div>
         <div style="width: 100%;display: flex;flex-direction: column-reverse;
         align-items: flex-start;">
-          <span style="margin: 0;" class="font">Du {{autoEvalObject.histo[item.key | toString].auto_eval.date_begin}} au {{autoEvalObject.current[item.key | toString].auto_eval.date_end}}</span>
+          <span style="margin: 0;" class="font"> {{autoEvalObject.histo[item.key | toString].auto_eval.date_end}}</span>
         </div>
       </div>
       <div style="display : flex ;flex-direction: column;text-align: center;
@@ -169,21 +172,24 @@
       <div style="width: 95%;height: 5%;text-align: justify;">
         <span style="margin: 0;margin-left: 5%;" class="font">Compétences évalués :</span>
       </div>
-      <div style="width: 100%;height: 10%; margin-top: 2%;display: flex;">
+      <div *ngIf="autoEvalObject.histo[item.key | toString].auto_eval.skills!=null && autoEvalObject.histo[item.key | toString].auto_eval.text == null" style="width: 100%;height: 10%; margin-top: 2%;display: flex;">
         <span *ngFor="let skill of autoEvalObject.histo[item.key | toString].auto_eval.skills" style="margin: 0;margin-left: 5%;" class="font"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;" class="font">{{autoEvalObject.skills[skill].name_skill}}</ion-badge></span>
+      </div>     
+      <div *ngIf="autoEvalObject.histo[item.key | toString].auto_eval.skills==null && autoEvalObject.histo[item.key | toString].auto_eval.text != null" style="width: 100%;height: 10%; margin-top: 2%;display: flex;">
+        <span  style="margin: 0;margin-left: 5%;" class="font"><ion-badge style="background-color: #2E3034;border: 1px solid #6E7899;padding: 10px;" class="font">{{autoEvalObject.histo[item.key | toString].auto_eval.text}}</ion-badge></span>
       </div>         
     </div>
 
-      <div *ngIf="alreadyMarked" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
-        <button (click)="seePreviousMark(item.key)" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="font">Voir les notes précédentes</button>
+      <div *ngIf="autoEvalObject.histo[item.key | toString].array!=null" style="width: 100%;height: 10%;display: flex;margin-top: 5%;">
+        <button (click)="seePreviousMark(item.key,'histo')" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 60%;padding: 10px;" class="font">Voir les notes précédentes</button>
       </div>
 
-      <div *ngIf="!isAddingMark && ngIfMarkMyselfBtn(autoEvalObject.histo[item.key | toString].array)" style="width: 100%;height: 10%;display: flex;margin-top: 3%;">
+      <!-- <div *ngIf="!isAddingMark && ngIfMarkMyselfBtn(autoEvalObject.histo[item.key | toString].array)" style="width: 100%;height: 10%;display: flex;margin-top: 3%;">
         <button (click)="markMyself(item.key)" style="background-color: #2E3034;border-radius: 32px;border: 1px solid #6E7899;width: 30%;padding: 10px;" class="fontTitle">Se noter</button>
-      </div>
+      </div> -->
 
 
-   <div *ngIf="isAddingMark" style="margin-top: 3%;justify-content: space-evenly" class="d-flex">
+   <!-- <div *ngIf="isAddingMark" style="margin-top: 3%;justify-content: space-evenly" class="d-flex">
     <ion-item style="--background: #3F4042;width: 45%;border: 2px solid #6E7899;border-radius: 12px;" lines="none">
       <ion-label class="fontTitle">Se noter</ion-label>
       <ion-select [(ngModel)]="markPlayer" >
@@ -199,7 +205,7 @@
       <img *ngIf="isAddingMark && markPlayer != ''" style="width: 25px;margin-top: 5px;" (click)="validMark()" src="../../../../assets/images/accept.png" alt="">
 
     </div>
-   </div>
+   </div> -->
 
     
     </div>
@@ -215,7 +221,7 @@
 
 
 </ion-slides>
-<div *ngIf="arrayDisplayPreviousMark.length!=0" class="slideItem h-90" style="width: 95% !important;overflow-y: auto;">
+<div *ngIf="arrayDisplayPreviousMark.length!=0" class="slideItem" style="height : 75%;width: 95% !important;overflow-y: auto;">
   
   <div *ngFor="let item of arrayDisplayPreviousMark ; let i = index" class="skillItem" >
 
@@ -252,7 +258,7 @@
       </div>
       <div style="width: 100%;display: flex;flex-direction: column-reverse;
       align-items: flex-start;">
-        <span style="margin: 0;" class="font">{{item.date}}</span>
+        <span style="margin: 0;" class="fontTitle">{{item.date}}</span>
       </div>
     
       
@@ -264,7 +270,7 @@
   </div>
   <div *ngIf="item.mark_player!=null" style="width: 100%;display: flex;flex-direction: column-reverse;
   align-items: flex-start;">
-    <span style="margin: 0;" class="font">{{item.mark_player}}</span>
+    <span style="margin: 0;" class="fontTitle">{{item.mark_player}}</span>
   </div>
   <div *ngIf="item.mark_player==null" style="width: 100%;display: flex;flex-direction: column-reverse;
   align-items: flex-start;">
@@ -278,7 +284,7 @@
   </div>
   <div *ngIf="item.mark_trainer!=null" style="width: 100%;display: flex;flex-direction: column-reverse;
   align-items: flex-start;">
-    <span style="margin: 0;" class="font">{{item.mark_trainer}}</span>
+    <span style="margin: 0;" class="fontTitle">{{item.mark_trainer}}</span>
   </div>
   <div *ngIf="item.mark_trainer==null" style="width: 100%;display: flex;flex-direction: column-reverse;
   align-items: flex-start;">
